@@ -98,6 +98,7 @@ public class Host extends User {
                     try {
                         BufferedReader reader = guest.getReader();
                         String msg = reader.readLine();
+                        msg = "[" + guest.getName() + "] " + msg;
                         messages.put(msg);
                         System.out.println(msg);
                     } catch (InterruptedException e) {

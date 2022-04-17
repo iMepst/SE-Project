@@ -11,6 +11,8 @@ public class Guest extends User {
     private PrintWriter writer;
     private BufferedReader reader;
 
+    private Client client;
+
     public Guest (String name) {
         super(name, "localhost", 50005);
     }
@@ -26,7 +28,12 @@ public class Guest extends User {
         }
     }
 
-    public void joinMeeting() {
+    public void joinMeeting(){
+        this.client = new Client();
+        client.start();
+    }
+
+    public void joinMeetingOLD() {
         try (Socket socket = new Socket(ip, port)) {
             this.socket = socket;
             System.out.println("Connected to " + this.ip);
@@ -51,7 +58,6 @@ public class Guest extends User {
         }
     }
 
-    public void sendMessage() {}
 
     public Runnable createReceiver(Socket socket) {
 
@@ -83,7 +89,7 @@ public class Guest extends User {
                     String msg;
                     do{
                         msg = sc.nextLine();
-                        output.println("[" + name + "] " + msg );
+                        output.println( msg );
                     }
                     while(! msg.equals(":quit"));
 
