@@ -61,10 +61,8 @@ public class Guest extends User {
                 try(BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()))){
                     String msg = "";
                     do {
-                        if (input.ready()) {
-                            msg = input.readLine();
-                            System.out.println(msg);
-                        }
+                        msg = input.readLine();
+                        System.out.println(msg);
                     }
                     while(! msg.endsWith(":quit"));
                 }

@@ -95,11 +95,9 @@ public class Host extends User {
             @Override
             public void run(){
                 while (isRunning) {
-                    String msg = "";
                     try {
                         BufferedReader reader = guest.getReader();
-                        msg = reader.readLine();
-                        //System.out.println("Message from " + guest.getName());
+                        String msg = reader.readLine();
                         messages.put(msg);
                         System.out.println(msg);
                     } catch (InterruptedException e) {
@@ -120,7 +118,6 @@ public class Host extends User {
                 while (isRunning){
                     try {
                         String msg = messages.take();
-                        System.out.println("Message broadcasted");
                         for (Guest guest : guests) {
                             guest.getWriter().println(msg);
                             guest.getWriter().flush();
