@@ -8,11 +8,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+public class UserApplication extends Application {
 
-public class MainApplication extends Application {
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("start-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("user-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         stage.setTitle("Plupper");
 
@@ -25,9 +29,5 @@ public class MainApplication extends Application {
 
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }
