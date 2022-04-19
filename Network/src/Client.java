@@ -20,6 +20,7 @@ public class Client {
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             BufferedWriter writer = new BufferedWriter((new OutputStreamWriter(socket.getOutputStream())));
             ){
+
             this.socket = socket;
             this.reader = reader;
             this.writer = writer;
@@ -42,8 +43,8 @@ public class Client {
     }
 
     public void stop(){
-        transmitter.interrupt();
-        receiver.interrupt();
+
+        isRunning = false;
 
         try {
             writer.close();
